@@ -1,16 +1,62 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
+
+  /* Color: light */
   --bg: #faf8f4;
+  --surface: #f2efe8;
   --text: #1c1c1e;
-  --muted: #6b6b70;
+  --muted: #5f5f66;
   --accent: #3d5a73;
+  --border: rgba(28, 28, 30, 0.1);
+  --acrylic: rgba(250, 248, 244, 0.72);
+  --shadow: 0 1px 0 rgba(28, 28, 30, 0.04), 0 8px 24px -12px rgba(28, 28, 30, 0.12);
+  --show-sun: none;
+  --show-moon: block;
+
+  /* Typography */
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+
+  --step-body: 1.125rem;
+  --step-small: 0.875rem;
+  --step-h3: clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
+  --step-h2: clamp(1.6rem, 1.3rem + 1.4vw, 2.15rem);
+  --step-h1: clamp(2.4rem, 1.7rem + 3.2vw, 3.75rem);
+
+  /* Layout */
   --measure: 38rem;
+  --wide: 66rem;
+  --gutter: clamp(1.25rem, 4vw, 2rem);
+  --header-h: 4rem;
 }
+
+/* Dark: a designed palette, not an inversion. Follows the OS unless overridden. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141416;
-    --text: #e8e6e1;
-    --muted: #9a9aa0;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121214;
+    --surface: #1a1a1d;
+    --text: #e6e4df;
+    --muted: #a0a0a8;
     --accent: #8fb0cc;
+    --border: rgba(255, 255, 255, 0.1);
+    --acrylic: rgba(18, 18, 20, 0.7);
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+    --show-sun: block;
+    --show-moon: none;
   }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121214;
+  --surface: #1a1a1d;
+  --text: #e6e4df;
+  --muted: #a0a0a8;
+  --accent: #8fb0cc;
+  --border: rgba(255, 255, 255, 0.1);
+  --acrylic: rgba(18, 18, 20, 0.7);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  --show-sun: block;
+  --show-moon: none;
 }
