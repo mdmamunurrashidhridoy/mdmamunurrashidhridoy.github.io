@@ -1,0 +1,37 @@
+.empty-note { margin: 0; color: var(--muted); font-style: italic; }
+
+/* Achievements */
+.achievements { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.achievements li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1.5rem; padding-block: 0.9rem; border-top: 1px solid var(--border); }
+.achievements li:first-child { border-top: 0; padding-top: 0; }
+.achievements strong { font-weight: 600; }
+
+/* Skills */
+.skill-groups { margin: 0; max-width: var(--measure); }
+.skill-groups > div { display: grid; gap: 0.4rem; padding-block: 1rem; border-top: 1px solid var(--border); }
+.skill-groups > div:first-child { border-top: 0; padding-top: 0; }
+.skill-groups dt { font: 500 0.75rem var(--font-sans); letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); padding-top: 0.3rem; }
+.skill-groups dd { margin: 0; }
+.skill-groups .tags { font-family: var(--font-serif); font-size: 1rem; color: var(--text); }
+@media (min-width: 36em) { .skill-groups > div { grid-template-columns: 10rem 1fr; gap: 1.5rem; } }
+
+/* Publications */
+.pub-list { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.pub-list li { padding-block: 1.25rem; border-top: 1px solid var(--border); }
+.pub-list li:first-child { border-top: 0; padding-top: 0; }
+.pub-list h3 { margin: 0.15em 0 0.3em; }
+.pub-list p { margin: 0 0 0.2em; }
+
+/* Contact */
+.contact-list { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: var(--measure); }
+.contact-list li { display: grid; grid-template-columns: 1.25rem 7.5rem minmax(0, 1fr); align-items: center; gap: 0.75rem; padding-block: 0.85rem; border-top: 1px solid var(--border); }
+.contact-list li:first-child { border-top: 0; padding-top: 0; }
+.contact-list .icon { width: 1.1rem; height: 1.1rem; color: var(--muted); }
+.contact-list .meta { margin: 0; }
+.contact-list a { color: var(--text); overflow-wrap: anywhere; }
+@media (max-width: 30em) { .contact-list li { grid-template-columns: 1.25rem minmax(0, 1fr); } .contact-list .meta { display: none; } }
+
+/* Footer */
+.site-footer { margin-top: clamp(2.5rem, 5vw, 4rem); padding-block: 2rem; border-top: 1px solid var(--border); font-family: var(--font-sans); font-size: 0.85rem; color: var(--muted); }
+.site-footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; }
+.site-footer p { margin: 0; }

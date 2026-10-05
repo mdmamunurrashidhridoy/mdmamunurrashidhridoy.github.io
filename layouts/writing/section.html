@@ -1,0 +1,14 @@
+{{ define "main" }}
+<header class="container page-head">
+  <p class="eyebrow">Writing</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="measure lede">{{ . }}</div>{{ end }}
+</header>
+<section class="container section" aria-label="All posts">
+  {{ with .Pages }}
+    {{ partial "post-list.html" . }}
+  {{ else }}
+    <p class="empty-note">Posts will appear here.</p>
+  {{ end }}
+</section>
+{{ end }}

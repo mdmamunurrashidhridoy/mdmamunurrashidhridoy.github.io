@@ -1,0 +1,13 @@
+<section class="section" id="skills" aria-labelledby="skills-title">
+  <div class="container section-grid reveal">
+    <header class="section-head"><h2 id="skills-title">Skills</h2></header>
+    <dl class="skill-groups">
+      {{ range hugo.Data.skills.groups }}
+      <div>
+        <dt>{{ .name }}</dt>
+        <dd><ul class="tags">{{ range .items }}<li>{{ . }}</li>{{ end }}</ul></dd>
+      </div>
+      {{ end }}
+    </dl>
+  </div>
+</section>

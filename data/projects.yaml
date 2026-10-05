@@ -1,0 +1,21 @@
+items:
+  - title: "AgriConnect"
+    context: "Web application"
+    summary: "A direct-to-consumer marketplace that lets producers list and sell their products without middlemen. Producers manage listings, their profile, and orders from a dedicated dashboard, while buyers browse products and order directly."
+    tech: ["Laravel", "PHP", "MySQL", "Blade", "HTML/CSS", "JavaScript"]
+    repo: "https://github.com/mdmamunurrashidhridoy/AgriConnect"
+  - title: "3D Periodic Table"
+    context: "Computer graphics"
+    summary: "An interactive visualizer of the full 118-element periodic table. Selecting an element opens an animated 3D Bohr-model atom with orbiting electrons and a nucleus scaled by atomic number, with a custom DDA line-drawing routine for the table borders."
+    tech: ["C/C++", "OpenGL", "GLUT"]
+    repo: "https://github.com/mdmamunurrashidhridoy/ElementOrbitSimulator"
+  - title: "DIU TravelMate"
+    context: "Mobile application"
+    summary: "A transport management app for university buses, covering live vehicle tracking, digital ticketing with QR verification, schedule alerts, and rider feedback."
+    tech: ["Flutter", "Firebase"]
+    repo: "https://github.com/mdmamunurrashidhridoy/DIU_TravelMate"
+  - title: "Blood Donation System"
+    context: "Web application"
+    summary: "A platform connecting blood donors with people in need. Users can register, mark themselves as donors, search for donors, and post blood requests, and relevant nearby donors are notified automatically. Donors are marked ineligible for three months after donating."
+    tech: ["Laravel", "MySQL", "Blade", "HTML/CSS", "JavaScript"]
+    repo: "https://github.com/mdmamunurrashidhridoy/ShareBlood"

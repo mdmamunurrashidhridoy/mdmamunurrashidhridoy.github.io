@@ -3,12 +3,10 @@
 {{ partial "about.html" . }}
 {{ partial "research.html" . }}
 {{ partial "education.html" . }}
-{{ range slice "projects" "writing" "contact" }}
-<section class="section" id="{{ . }}">
-  <div class="container section-grid">
-    <header class="section-head"><h2>{{ . | title }}</h2></header>
-    <p class="measure">Placeholder. Built in the next step.</p>
-  </div>
-</section>
-{{ end }}
+{{ partial "projects.html" . }}
+{{ partial "achievements.html" . }}
+{{ partial "skills.html" . }}
+{{ partial "publications.html" . }}
+{{ partial "writing.html" . }}
+{{ partial "contact.html" . }}
 {{ end }}

@@ -1,0 +1,26 @@
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="container section-grid reveal">
+    <header class="section-head"><h2 id="projects-title">Projects</h2></header>
+    <ol class="project-list">
+      {{ range hugo.Data.projects.items }}
+      <li class="project">
+        <div class="project__body">
+          {{ with .context }}<p class="meta">{{ . }}</p>{{ end }}
+          <h3>{{ .title }}</h3>
+          <p>{{ .summary }}</p>
+          <ul class="tags" aria-label="Technologies">
+            {{ range .tech }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          <div class="project__links">
+            {{ with .repo }}<a class="link-arrow" href="{{ . }}" rel="noopener">{{ partial "icon.html" (dict "name" "github") }} Source code</a>{{ end }}
+            {{ with .demo }}<a class="link-arrow" href="{{ . }}" rel="noopener">{{ partial "icon.html" (dict "name" "arrow-right") }} Live demo</a>{{ end }}
+          </div>
+        </div>
+        <div class="project__media">
+          {{ partial "placeholder.html" (dict "label" "Project Image" "ratio" "16/10" "alt" (printf "%s project" .title) "src" .image) }}
+        </div>
+      </li>
+      {{ end }}
+    </ol>
+  </div>
+</section>

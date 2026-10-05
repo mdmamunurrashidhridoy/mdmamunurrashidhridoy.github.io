@@ -1,0 +1,14 @@
+{{ $posts := where site.RegularPages "Section" "writing" }}
+<section class="section" id="writing" aria-labelledby="writing-title">
+  <div class="container section-grid reveal">
+    <header class="section-head"><h2 id="writing-title">Writing</h2></header>
+    <div>
+      {{ if $posts }}
+        {{ partial "post-list.html" (first 3 $posts) }}
+        <p class="meta" style="margin-top:1.5rem"><a class="link-arrow" href="{{ "writing/" | relURL }}">All writing</a></p>
+      {{ else }}
+        <p class="empty-note">Essays, research notes, and technical articles will appear here.</p>
+      {{ end }}
+    </div>
+  </div>
+</section>

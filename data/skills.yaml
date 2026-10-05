@@ -1,0 +1,7 @@
+groups:
+  - name: "Programming"
+    items: ["C", "Python", "Java"]
+  - name: "Data & AI"
+    items: ["Machine Learning", "Deep Learning", "Natural Language Processing", "Data Science"]
+  - name: "Tools & Technologies"
+    items: ["Laravel", "MySQL", "Flutter", "Firebase", "OpenGL", "HTML/CSS", "JavaScript", "Git & GitHub"]

@@ -1,0 +1,24 @@
+{{ $links := slice
+  (dict "icon" "mail" "label" "Email" "url" (printf "mailto:%s" site.Params.email) "text" site.Params.email)
+  (dict "icon" "github" "label" "GitHub" "url" site.Params.github)
+  (dict "icon" "linkedin" "label" "LinkedIn" "url" site.Params.linkedin)
+  (dict "icon" "graduation-cap" "label" "Google Scholar" "url" site.Params.scholar)
+  (dict "icon" "orcid" "label" "ORCID" "url" site.Params.orcid) }}
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="container section-grid reveal">
+    <header class="section-head"><h2 id="contact-title">Contact</h2></header>
+    <div>
+      <p class="measure">I'm happy to hear from fellow researchers, collaborators, and anyone interested in my work. Email is the best way to reach me.</p>
+      <ul class="contact-list">
+        {{ range $links }}{{ $l := . }}{{ with $l.url }}
+        <li>
+          {{ partial "icon.html" (dict "name" $l.icon) }}
+          <span class="meta">{{ $l.label }}</span>
+          <a href="{{ . }}" rel="noopener">{{ $l.text | default (. | replaceRE "^https?://(www\\.)?" "" | strings.TrimSuffix "/") }}</a>
+        </li>
+        {{ end }}{{ end }}
+      </ul>
+      {{ with site.Params.location }}<p class="meta" style="margin-top:1.25rem">{{ . }}</p>{{ end }}
+    </div>
+  </div>
+</section>

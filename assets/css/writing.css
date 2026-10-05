@@ -1,0 +1,26 @@
+.post-list { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.post-list li { padding-block: 1.25rem; border-top: 1px solid var(--border); }
+.post-list li:first-child { border-top: 0; padding-top: 0; }
+.post-list .meta { margin: 0; }
+.post-list h3 { margin: 0.15em 0 0.3em; }
+.post-list h3 a { color: var(--text); text-decoration: none; }
+.post-list h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.post-list p:not(.meta) { margin: 0; color: var(--muted); font-size: 1rem; }
+
+.page-head { padding-block: clamp(3rem, 7vw, 5rem) 0.5rem; }
+.page-head h1 { margin-bottom: 0.4em; }
+.post { padding-block: clamp(3rem, 7vw, 5rem) 3rem; }
+.post__head { margin-bottom: 2.5rem; }
+.post__head .meta { margin: 0 0 0.5rem; }
+.post__head h1 { margin-bottom: 0.4em; }
+
+/* Reading typography for post and About content */
+.prose h2 { margin-top: 2em; font-size: var(--step-h3); }
+.prose h3 { margin-top: 1.6em; }
+.prose ul, .prose ol { margin: 0 0 1.1em; padding-left: 1.4rem; }
+.prose li { margin-bottom: 0.35em; }
+.prose blockquote { margin: 1.5em 0; padding-left: 1.25rem; border-left: 2px solid var(--border); color: var(--muted); font-style: italic; }
+.prose pre { overflow-x: auto; margin: 1.5em 0; padding: 1rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; font-size: 0.875rem; line-height: 1.55; }
+.prose :not(pre) > code { background: var(--surface); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.88em; }
+.prose img { height: auto; border-radius: 4px; }
+.prose hr { border: 0; border-top: 1px solid var(--border); margin: 2.5em 0; }

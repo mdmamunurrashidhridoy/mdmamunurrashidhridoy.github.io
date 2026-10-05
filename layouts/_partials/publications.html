@@ -1,0 +1,19 @@
+<section class="section" id="publications" aria-labelledby="publications-title">
+  <div class="container section-grid reveal">
+    <header class="section-head"><h2 id="publications-title">Publications</h2></header>
+    {{ with hugo.Data.publications.items }}
+    <ol class="pub-list">
+      {{ range . }}
+      <li>
+        <p class="meta">{{ with .type }}{{ . }}{{ end }}{{ with .year }} · {{ . }}{{ end }}</p>
+        <h3>{{ if .url }}<a href="{{ .url }}" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
+        {{ with .authors }}<p>{{ . }}</p>{{ end }}
+        {{ with .venue }}<p class="meta">{{ . }}</p>{{ end }}
+      </li>
+      {{ end }}
+    </ol>
+    {{ else }}
+    <p class="empty-note">Research work and publications will be added here.</p>
+    {{ end }}
+  </div>
+</section>

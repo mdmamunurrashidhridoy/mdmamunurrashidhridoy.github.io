@@ -1,0 +1,10 @@
+# Add entries below, then delete the "[]" on the next line.
+# Fields: type, year, title, authors, venue, url (all optional except title)
+#
+#  - type: "Preprint"
+#    year: "2027"
+#    title: "Paper title"
+#    authors: "A. Author, B. Author"
+#    venue: "arXiv"
+#    url: "https://..."
+items: []
