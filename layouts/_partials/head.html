@@ -1,14 +1,60 @@
+{{- $title := cond .IsHome (printf "%s · Computer Science Researcher" site.Title) (printf "%s · %s" .Title site.Title) -}}
+{{- $desc := or .Description site.Params.description -}}
+{{- $hasOG := fileExists "static/images/og.png" -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ site.Title }} · Computer Science Researcher{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
 <link rel="canonical" href="{{ .Permalink }}">
+{{ if eq .Kind "404" }}<meta name="robots" content="noindex">{{ end }}
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:type" content="{{ if eq .Section "writing" }}{{ if .IsPage }}article{{ else }}website{{ end }}{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+{{ if and (eq .Section "writing") .IsPage }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ if $hasOG }}
+<meta property="og:image" content="{{ "images/og.png" | absURL }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.Title }}, Computer Science researcher">
+{{ end }}
+<meta name="twitter:card" content="{{ if $hasOG }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{ if $hasOG }}<meta name="twitter:image" content="{{ "images/og.png" | absURL }}">{{ end }}
+
+{{ if .IsHome }}
+{{ $same := slice }}
+{{ with site.Params.github }}{{ $same = $same | append . }}{{ end }}
+{{ with site.Params.linkedin }}{{ $same = $same | append . }}{{ end }}
+{{ with site.Params.scholar }}{{ $same = $same | append . }}{{ end }}
+{{ with site.Params.orcid }}{{ $same = $same | append . }}{{ end }}
+{{ $person := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" site.Params.fullName
+  "alternateName" site.Title
+  "url" site.Home.Permalink
+  "description" site.Params.description
+  "affiliation" (dict "@type" "CollegeOrUniversity" "name" "Daffodil International University")
+  "sameAs" $same }}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
+{{ end }}
+
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add("js")</script>
 <link rel="preload" href="{{ "fonts/source-serif.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ "fonts/inter.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-{{ $styles := slice (resources.Get "css/fonts.css") (resources.Get "css/tokens.css") (resources.Get "css/base.css") (resources.Get "css/header.css") (resources.Get "css/components.css") (resources.Get "css/sections.css") (resources.Get "css/projects.css") (resources.Get "css/content.css") (resources.Get "css/writing.css") }}
+{{ $styles := slice }}
+{{ range slice "fonts" "tokens" "base" "header" "components" "sections" "projects" "content" "writing" }}
+  {{ with resources.Get (printf "css/%s.css" .) }}{{ $styles = $styles | append . }}{{ else }}{{ errorf "missing assets/css/%s.css" . }}{{ end }}
+{{ end }}
 {{ $css := resources.Concat "css/main.css" $styles | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ $js := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint }}
