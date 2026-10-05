@@ -1,0 +1,10 @@
+baseURL = "https://mdmamunurrashidhridoy.github.io/"
+title = "Hridoy"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+
+# Re-enable when the writing section adds tags/categories.
+disableKinds = ["taxonomy", "term"]
+
+[markup.highlight]
+  noClasses = false

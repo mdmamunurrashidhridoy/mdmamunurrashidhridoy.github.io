@@ -1,0 +1,16 @@
+:root {
+  color-scheme: light dark;
+  --bg: #faf8f4;
+  --text: #1c1c1e;
+  --muted: #6b6b70;
+  --accent: #3d5a73;
+  --measure: 38rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141416;
+    --text: #e8e6e1;
+    --muted: #9a9aa0;
+    --accent: #8fb0cc;
+  }
+}
