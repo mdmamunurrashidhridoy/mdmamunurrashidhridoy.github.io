@@ -2,7 +2,7 @@
   <div class="container section-grid reveal">
     <header class="section-head"><h2 id="research-title">Research interests</h2></header>
     <ol class="interest-list">
-      {{ range $i, $e := site.Data.research.items }}
+      {{ range $i, $e := hugo.Data.research.items }}
       <li>
         <span class="interest-list__n" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
         <div>

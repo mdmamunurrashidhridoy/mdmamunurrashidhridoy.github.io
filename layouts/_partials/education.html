@@ -2,7 +2,7 @@
   <div class="container section-grid reveal">
     <header class="section-head"><h2 id="education-title">Education</h2></header>
     <ol class="timeline">
-      {{ range site.Data.education.items }}
+      {{ range hugo.Data.education.items }}
       <li>
         <p class="meta timeline__period">{{ .period }}</p>
         <h3>{{ .degree }}</h3>
