@@ -1,0 +1,11 @@
+{{- /* Usage: partial "placeholder.html" (dict "label" "Profile Image" "ratio" "4/5" "alt" "..." "src" "images/me.jpg" "eager" true)
+   Leave "src" out for a placeholder; add it later and the layout stays identical. */ -}}
+{{- $ratio := .ratio | default "4/5" -}}
+{{- $label := .label | default "Image" -}}
+{{- with .src -}}
+<figure class="media" style="{{ printf "--ratio: %s" $ratio | safeCSS }}">
+  <img src="{{ . | relURL }}" alt="{{ $.alt }}" loading="{{ if $.eager }}eager{{ else }}lazy{{ end }}" decoding="async">
+</figure>
+{{- else -}}
+<div class="media media--placeholder" style="{{ printf "--ratio: %s" $ratio | safeCSS }}" role="img" aria-label="{{ .alt | default $label }} (placeholder)"><span>[ {{ $label }} ]</span></div>
+{{- end -}}

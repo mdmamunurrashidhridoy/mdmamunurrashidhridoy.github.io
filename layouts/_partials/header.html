@@ -1,6 +1,6 @@
 <header class="site-header" data-scrolled="false" data-open="false">
   <div class="container site-header__inner">
-    <a class="brand" href="{{ "/" | relURL }}" aria-label="Hridoy, home">Hridoy</a>
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="Hridoy, home">{{ partial "monogram.html" . }}<span>Hridoy</span></a>
     <nav id="site-nav" class="site-nav" aria-label="Primary">
       <ul>
         {{ range site.Menus.main }}

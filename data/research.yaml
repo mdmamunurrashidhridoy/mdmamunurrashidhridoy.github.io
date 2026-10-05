@@ -1,0 +1,11 @@
+items:
+  - title: "Machine Learning"
+    text: "Learning from data: models, evaluation, and how well they generalise."
+  - title: "Deep Learning"
+    text: "Neural network architectures and the training methods behind them."
+  - title: "Natural Language Processing"
+    text: "Computational approaches to understanding and generating human language."
+  - title: "Bangla NLP"
+    text: "Language technology for Bangla, a widely spoken but comparatively low-resource language."
+  - title: "Large Language Models"
+    text: "How large-scale language models work, how they are adapted, and where they fall short."

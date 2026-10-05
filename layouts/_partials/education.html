@@ -1,0 +1,18 @@
+<section class="section" id="education" aria-labelledby="education-title">
+  <div class="container section-grid reveal">
+    <header class="section-head"><h2 id="education-title">Education</h2></header>
+    <ol class="timeline">
+      {{ range site.Data.education.items }}
+      <li>
+        <p class="meta timeline__period">{{ .period }}</p>
+        <h3>{{ .degree }}</h3>
+        {{ with .major }}<p class="timeline__major">{{ . }}</p>{{ end }}
+        <p class="meta">{{ .school }}</p>
+        {{ with .status }}<p class="meta">{{ . }}</p>{{ end }}
+        {{ with .cgpa }}<p class="meta">CGPA {{ . }}</p>{{ end }}
+        {{ with .note }}<p class="meta">{{ . }}</p>{{ end }}
+      </li>
+      {{ end }}
+    </ol>
+  </div>
+</section>

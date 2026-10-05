@@ -1,0 +1,12 @@
+items:
+  - degree: "MSc in Computer Science & Engineering"
+    major: "Major in Data Science"
+    school: "Daffodil International University"
+    period: "2026 – 2027"
+    status: "In progress"
+    # cgpa: "4.00"
+  - degree: "BSc in Computer Science & Engineering"
+    school: "Daffodil International University"
+    period: "2022 – 2026"
+    cgpa: "3.95"
+    note: "Dean's Award, Fall 2023"

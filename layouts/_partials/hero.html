@@ -1,0 +1,24 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow">Computer Science · Data Science · Machine Learning · NLP · Research</p>
+      <h1 id="hero-title">{{ .Title }}</h1>
+      <p class="hero__name">{{ site.Params.fullName }}</p>
+      <p class="lede">{{ .Params.intro }}</p>
+      {{ with .Params.affiliation }}<p class="meta">{{ . }}</p>{{ end }}
+      <ul class="tags" aria-label="Research interests">
+        {{ range site.Data.research.items }}<li>{{ .title }}</li>{{ end }}
+      </ul>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="mailto:{{ site.Params.email }}">Get in touch {{ partial "icon.html" (dict "name" "arrow-right") }}</a>
+        <a class="link-arrow" href="#about">About me</a>
+        <ul class="social">
+          {{ with site.Params.github }}<li><a class="icon-btn" href="{{ . }}" rel="me noopener" aria-label="GitHub" title="GitHub">{{ partial "icon.html" (dict "name" "github") }}</a></li>{{ end }}
+        </ul>
+      </div>
+    </div>
+    <div class="hero__media">
+      {{ partial "placeholder.html" (dict "label" "Profile Image" "ratio" "4/5" "alt" "Portrait of Hridoy" "eager" true) }}
+    </div>
+  </div>
+</section>

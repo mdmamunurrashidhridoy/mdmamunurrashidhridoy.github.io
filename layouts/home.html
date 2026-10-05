@@ -1,20 +1,13 @@
 {{ define "main" }}
-<section class="section" style="padding-top: clamp(4rem, 10vw, 8rem);">
-  <div class="container">
-    <div class="measure">
-      <p class="eyebrow">Computer Science · Data Science · Machine Learning · NLP · Research</p>
-      <h1>{{ site.Title }}</h1>
-      <p class="lede">{{ site.Params.description }}</p>
-      <p>This paragraph checks body typography: <em>italic emphasis</em>, a <a href="#about">link</a>, and inline <code>code</code>. Source Serif 4 is set at a comfortable reading measure with generous line height.</p>
-      <p class="meta">Mohammadpur, Dhaka · Metadata in Inter</p>
-    </div>
-  </div>
-</section>
-{{ range slice "about" "research" "projects" "writing" "contact" }}
+{{ partial "hero.html" . }}
+{{ partial "about.html" . }}
+{{ partial "research.html" . }}
+{{ partial "education.html" . }}
+{{ range slice "projects" "writing" "contact" }}
 <section class="section" id="{{ . }}">
-  <div class="container">
-    <h2>{{ . | title }}</h2>
-    <p class="measure">Placeholder. This section is built in Step 5.</p>
+  <div class="container section-grid">
+    <header class="section-head"><h2>{{ . | title }}</h2></header>
+    <p class="measure">Placeholder. Built in the next step.</p>
   </div>
 </section>
 {{ end }}

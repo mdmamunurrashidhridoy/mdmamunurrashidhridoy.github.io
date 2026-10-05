@@ -8,7 +8,7 @@
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add("js")</script>
 <link rel="preload" href="{{ "fonts/source-serif.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ "fonts/inter.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-{{ $styles := slice (resources.Get "css/fonts.css") (resources.Get "css/tokens.css") (resources.Get "css/base.css") (resources.Get "css/header.css") }}
+{{ $styles := slice (resources.Get "css/fonts.css") (resources.Get "css/tokens.css") (resources.Get "css/base.css") (resources.Get "css/header.css") (resources.Get "css/components.css") (resources.Get "css/sections.css") }}
 {{ $css := resources.Concat "css/main.css" $styles | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ $js := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint }}
