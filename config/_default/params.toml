@@ -1,4 +1,4 @@
-description = "Computer Science researcher focused on Machine Learning, Deep Learning, NLP, Bangla NLP, and Large Language Models."
+﻿description = "Computer Science researcher focused on Machine Learning, Deep Learning, NLP, Bangla NLP, and Large Language Models."
 fullName = "MD. MAMUN UR RASHID HRIDOY"
 email = "rashid15-5273@diu.edu.bd"
 location = "Mohammadpur, Dhaka"
@@ -7,3 +7,5 @@ linkedin = "https://www.linkedin.com/in/mdmamunurrashidhridoy/"
 # Add these when you have them; they will appear automatically.
 # scholar = "https://scholar.google.com/citations?user=XXXX"
 # orcid = "https://orcid.org/0000-0000-0000-0000"
+profileImage = "images/profile.jpg"
+

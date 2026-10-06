@@ -5,10 +5,14 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  {{ partial "header.html" . }}
-  <main id="main">
-    {{ block "main" . }}{{ end }}
-  </main>
-  {{ partial "footer.html" . }}
+  <div class="shell">
+    {{ partial "sidebar.html" . }}
+    <div class="content">
+      <main id="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
 </body>
 </html>

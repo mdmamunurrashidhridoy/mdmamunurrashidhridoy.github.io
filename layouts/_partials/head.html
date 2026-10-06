@@ -52,7 +52,7 @@
 <link rel="preload" href="{{ "fonts/source-serif.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ "fonts/inter.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{ $styles := slice }}
-{{ range slice "fonts" "tokens" "base" "header" "components" "sections" "projects" "content" "writing" }}
+{{ range slice "fonts" "tokens" "base" "components" "sections" "projects" "content" "writing" "sidebar" }}
   {{ with resources.Get (printf "css/%s.css" .) }}{{ $styles = $styles | append . }}{{ else }}{{ errorf "missing assets/css/%s.css" . }}{{ end }}
 {{ end }}
 {{ $css := resources.Concat "css/main.css" $styles | resources.Minify | resources.Fingerprint }}

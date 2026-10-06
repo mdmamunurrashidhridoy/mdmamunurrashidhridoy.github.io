@@ -1,0 +1,48 @@
+{{ $links := slice
+  (dict "icon" "mail" "label" "Email" "url" (printf "mailto:%s" site.Params.email))
+  (dict "icon" "github" "label" "GitHub" "url" site.Params.github)
+  (dict "icon" "linkedin" "label" "LinkedIn" "url" site.Params.linkedin)
+  (dict "icon" "graduation-cap" "label" "Google Scholar" "url" site.Params.scholar)
+  (dict "icon" "orcid" "label" "ORCID" "url" site.Params.orcid) }}
+<aside class="sidebar" data-open="false" aria-label="Profile and navigation">
+  <div class="side__top">
+    <a class="side__mini" href="{{ "/" | relURL }}">Hridoy</a>
+    <div class="side__tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        {{ partial "icon.html" (dict "name" "sun" "class" "icon-sun") }}
+        {{ partial "icon.html" (dict "name" "moon" "class" "icon-moon") }}
+      </button>
+      <button class="icon-btn side-toggle" type="button" aria-expanded="false" aria-controls="side-panel" aria-label="Open menu">
+        {{ partial "icon.html" (dict "name" "menu" "class" "icon-menu") }}
+        {{ partial "icon.html" (dict "name" "x" "class" "icon-close") }}
+      </button>
+    </div>
+  </div>
+
+  <div class="side__wrap" id="side-panel">
+    <div class="side__body">
+      <div class="side__photo" style="--i:0">
+        {{ partial "placeholder.html" (dict "label" "Profile Image" "ratio" "1/1" "alt" "Portrait of Hridoy" "eager" true "src" site.Params.profileImage) }}
+      </div>
+      <p class="side__name" style="--i:1"><a href="{{ "/" | relURL }}">Hridoy</a></p>
+      <p class="side__role" style="--i:2">{{ site.Params.role | default "Computer Science researcher" }}</p>
+      <p class="side__bio" style="--i:3">{{ site.Params.tagline | default "Studying machine learning, NLP and large language models, with a focus on Bangla." }}</p>
+
+      <nav class="side__nav" aria-label="Primary" style="--i:4">
+        <ul>
+          {{ range site.Menus.main }}
+          <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </nav>
+
+      <div class="side__foot" style="--i:5">
+        <ul>
+          {{ range $links }}{{ $l := . }}{{ with $l.url }}
+          <li><a class="icon-btn" href="{{ . }}" rel="me noopener" aria-label="{{ $l.label }}" title="{{ $l.label }}">{{ partial "icon.html" (dict "name" $l.icon) }}</a></li>
+          {{ end }}{{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</aside>

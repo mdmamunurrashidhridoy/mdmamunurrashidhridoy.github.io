@@ -1,6 +1,5 @@
 (() => {
   const root = document.documentElement;
-  const header = document.querySelector(".site-header");
   const mq = matchMedia("(prefers-color-scheme: dark)");
   const current = () => root.dataset.theme || (mq.matches ? "dark" : "light");
 
@@ -19,25 +18,61 @@
     mq.addEventListener("change", label);
   }
 
-  if (!header) return;
-
-  // Acrylic appears once the page scrolls
-  const onScroll = () => { header.dataset.scrolled = String(window.scrollY > 8); };
-  onScroll();
-  addEventListener("scroll", onScroll, { passive: true });
+  const side = document.querySelector(".sidebar");
+  if (!side) return;
 
   // Mobile menu
-  const btn = header.querySelector(".nav-toggle");
-  if (btn) {
-    const set = (open) => {
-      btn.setAttribute("aria-expanded", String(open));
-      btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      header.dataset.open = String(open);
-    };
-    btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
-    header.addEventListener("click", (e) => { if (e.target.closest(".site-nav a")) set(false); });
-    addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && header.dataset.open === "true") { set(false); btn.focus(); }
-    });
+  const btn = side.querySelector(".side-toggle");
+  const setOpen = (open) => {
+    if (!btn) return;
+    btn.setAttribute("aria-expanded", String(open));
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    side.dataset.open = String(open);
+  };
+  if (btn) btn.addEventListener("click", () => setOpen(btn.getAttribute("aria-expanded") !== "true"));
+  addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && side.dataset.open === "true") { setOpen(false); if (btn) btn.focus(); }
+  });
+
+  // Active section highlight
+  const links = [...side.querySelectorAll(".side__nav a")];
+  const keyOf = (a) => new URL(a.href, location.href).hash.slice(1);
+  const setActive = (key) => links.forEach((a) => {
+    const on = keyOf(a) === key;
+    a.classList.toggle("is-active", on);
+    if (on) a.setAttribute("aria-current", "location"); else a.removeAttribute("aria-current");
+  });
+
+  // Sections without their own nav button count toward the nearest one above.
+  const alias = { education: "research", achievements: "projects", skills: "projects", publications: "projects" };
+  const sections = [...document.querySelectorAll("main section[id]")];
+  let lockUntil = 0;
+
+  if (sections.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (Date.now() < lockUntil) return;
+      entries.forEach((e) => { if (e.isIntersecting) setActive(alias[e.target.id] || e.target.id); });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    sections.forEach((s) => io.observe(s));
+    addEventListener("scroll", () => {
+      if (Date.now() >= lockUntil && scrollY < 120) setActive(null);
+    }, { passive: true });
   }
+
+  // Click: highlight right away, play the arrival animation, close the mobile menu
+  side.addEventListener("click", (e) => {
+    const a = e.target.closest(".side__nav a");
+    if (!a) return;
+    const id = keyOf(a);
+    const target = id && document.getElementById(id);
+    if (target) {
+      lockUntil = Date.now() + 900;
+      setActive(id);
+      target.classList.remove("is-arriving");
+      void target.offsetWidth;
+      target.classList.add("is-arriving");
+      setTimeout(() => target.classList.remove("is-arriving"), 900);
+    }
+    setOpen(false);
+  });
 })();
