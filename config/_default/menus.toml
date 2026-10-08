@@ -7,14 +7,26 @@
   url = "/#research"
   weight = 20
 [[main]]
+  name = "Education"
+  url = "/#education"
+  weight = 30
+[[main]]
   name = "Projects"
   url = "/#projects"
-  weight = 30
+  weight = 40
+[[main]]
+  name = "Skills"
+  url = "/#skills"
+  weight = 50
+[[main]]
+  name = "Publications"
+  url = "/#publications"
+  weight = 60
 [[main]]
   name = "Writing"
   url = "/#writing"
-  weight = 40
+  weight = 70
 [[main]]
   name = "Contact"
   url = "/#contact"
-  weight = 50
+  weight = 80

@@ -1,0 +1,73 @@
+:root { --glow-o: 0.30; --glow-slow: 1; --grain-o: 0.05; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --glow-o: 0.42; --grain-o: 0.07; }
+}
+:root[data-theme="dark"] { --glow-o: 0.42; --grain-o: 0.07; }
+
+.ambient {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+.ambient i {
+  position: absolute; display: block; border-radius: 50%;
+  opacity: var(--glow-o);
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+.ambient i:nth-child(1) {
+  width: 62vmax; height: 44vmax; left: -16vmax; top: -16vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 80%, transparent) 0%, color-mix(in srgb, var(--accent) 30%, transparent) 55%, transparent 100%);
+  animation: flow-a calc(30s * var(--glow-slow)) ease-in-out infinite alternate;
+}
+.ambient i:nth-child(2) {
+  width: 54vmax; height: 40vmax; right: -18vmax; top: 22vh;
+  background: radial-gradient(closest-side, rgba(139, 124, 214, 0.70) 0%, rgba(139, 124, 214, 0.24) 55%, transparent 100%);
+  animation: flow-b calc(38s * var(--glow-slow)) ease-in-out infinite alternate;
+}
+.ambient i:nth-child(3) {
+  width: 58vmax; height: 36vmax; left: 20vw; bottom: -22vmax;
+  background: radial-gradient(closest-side, rgba(86, 176, 178, 0.62) 0%, rgba(86, 176, 178, 0.22) 55%, transparent 100%);
+  animation: flow-c calc(26s * var(--glow-slow)) ease-in-out infinite alternate;
+}
+
+/* Liquid feel: stretch and squash while drifting */
+@keyframes flow-a {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1, 1); }
+  33%  { transform: translate(9vw, 6vh) rotate(14deg) scale(1.14, 0.9); }
+  66%  { transform: translate(4vw, 14vh) rotate(-8deg) scale(0.92, 1.12); }
+  100% { transform: translate(12vw, 9vh) rotate(10deg) scale(1.08, 0.96); }
+}
+@keyframes flow-b {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1, 1); }
+  33%  { transform: translate(-9vw, -5vh) rotate(-16deg) scale(0.9, 1.14); }
+  66%  { transform: translate(-4vw, 9vh) rotate(8deg) scale(1.12, 0.92); }
+  100% { transform: translate(-11vw, 3vh) rotate(-10deg) scale(0.96, 1.08); }
+}
+@keyframes flow-c {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1, 1); }
+  33%  { transform: translate(8vw, -9vh) rotate(12deg) scale(1.12, 0.92); }
+  66%  { transform: translate(-6vw, -4vh) rotate(-14deg) scale(0.92, 1.1); }
+  100% { transform: translate(5vw, -12vh) rotate(8deg) scale(1.06, 0.98); }
+}
+
+/* Fine grain */
+.ambient::after {
+  content: ""; position: absolute; inset: 0;
+  opacity: var(--grain-o);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient i { animation: none; }
+}
+
+/* Everything else sits above the glow */
+.shell { position: relative; z-index: 1; }
+@media (min-width: 64em) {
+  .sidebar {
+    background: color-mix(in srgb, var(--surface) 55%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+  }
+}

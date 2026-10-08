@@ -44,7 +44,7 @@
   });
 
   // Sections without their own nav button count toward the nearest one above.
-  const alias = { education: "research", achievements: "projects", skills: "projects", publications: "projects" };
+  const alias = { achievements: "projects" };
   const sections = [...document.querySelectorAll("main section[id]")];
   let lockUntil = 0;
 
